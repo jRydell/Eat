@@ -4,21 +4,16 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 const SHOPPING_LIST_KEY = "shopping_list";
 const WEEKLY_MENU_KEY = "weeklyMenu";
 
-// Spara inköpslistan
+// Save the shopping list
 export async function saveShoppingList(list: any[]) {
   try {
-    const currentList = await loadShoppingList();
-    const updatedList = [
-      ...currentList,
-      ...list.filter((item) => !currentList.includes(item)),
-    ];
-    await AsyncStorage.setItem(SHOPPING_LIST_KEY, JSON.stringify(updatedList));
+    await AsyncStorage.setItem(SHOPPING_LIST_KEY, JSON.stringify(list));
   } catch (error) {
     console.error("Error saving shopping list:", error);
   }
 }
 
-// Ladda inköpslistan
+// Load the shopping list
 export async function loadShoppingList() {
   try {
     const data = await AsyncStorage.getItem(SHOPPING_LIST_KEY);
@@ -29,7 +24,7 @@ export async function loadShoppingList() {
   }
 }
 
-// Spara veckomenyn
+// Save the menu
 export const saveMenu = async (menu: any) => {
   try {
     const menuJSON = JSON.stringify(menu);
@@ -39,7 +34,7 @@ export const saveMenu = async (menu: any) => {
   }
 };
 
-// Hämta veckomenyn
+// Load the menu
 export const getMenu = async () => {
   try {
     const menuJSON = await AsyncStorage.getItem(WEEKLY_MENU_KEY);
@@ -50,7 +45,7 @@ export const getMenu = async () => {
   }
 };
 
-// Generera inköpslistan från recepten i veckomenyn
+// Generate shoppinglist
 export const generateShoppingList = (menu: any[]) => {
   let shoppingList: string[] = [];
   menu.forEach((meal) => {

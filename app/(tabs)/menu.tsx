@@ -4,12 +4,12 @@ import { View, Text, Button, FlatList, StyleSheet } from "react-native";
 import { fetchRandomMeal } from "../../services/api";
 import { saveShoppingList, loadShoppingList } from "../../utils/storage";
 import { extractIngredients } from "../../services/api";
-import MealGenerator from "@/components/MealGenerator";
+import MenuGenerator from "@/components/MenuGenerator";
 
 export default function MenuTab() {
   return (
     <View style={styles.container}>
-      <MealGenerator />
+      <MenuGenerator />
     </View>
   );
 }
