@@ -1,21 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { View, Text, Button, FlatList, StyleSheet } from "react-native";
-import { loadShoppingList, saveShoppingList } from "../utils/storage";
+import { saveShoppingList } from "../utils/storage";
 
-const ShoppingListTab = () => {
-  const [shoppingList, setShoppingList] = useState<string[]>([]);
+type ShoppingListProps = {
+  shoppingList: string[];
+  setShoppingList: React.Dispatch<React.SetStateAction<string[]>>;
+};
 
-  // Load shopping list from AsyncStorage when the component mounts
-  useEffect(() => {
-    const fetchShoppingList = async () => {
-      const list = await loadShoppingList();
-      setShoppingList(list);
-    };
-    fetchShoppingList();
-  }, []);
-
+function ShoppingList({ shoppingList, setShoppingList }: ShoppingListProps) {
   const removeItemFromList = async (item: string) => {
-    const updatedList = shoppingList.filter((i) => i !== item);
+    const updatedList = shoppingList.filter((i: string) => i !== item);
     setShoppingList(updatedList);
     await saveShoppingList(updatedList);
   };
@@ -32,7 +26,7 @@ const ShoppingListTab = () => {
       )}
     />
   );
-};
+}
 
 const styles = StyleSheet.create({
   item: {
@@ -49,4 +43,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ShoppingListTab;
+export default ShoppingList;

@@ -1,18 +1,28 @@
-import { View, Text, StyleSheet } from "react-native";
-import { useEffect, useState } from "react";
+import React, { useState } from "react";
+import { View, StyleSheet } from "react-native";
+import { useFocusEffect } from "@react-navigation/native";
 import { loadShoppingList } from "../../utils/storage";
 import ShoppingList from "@/components/ShoppingList";
 
 export default function ShoppingListTab() {
-  const [shoppingList, setShoppingList] = useState([]);
+  const [shoppingList, setShoppingList] = useState<string[]>([]);
 
-  useEffect(() => {
-    loadShoppingList().then(setShoppingList);
-  }, []);
+  useFocusEffect(
+    React.useCallback(() => {
+      const fetchShoppingList = async () => {
+        const list = await loadShoppingList();
+        setShoppingList(list);
+      };
+      fetchShoppingList();
+    }, [])
+  );
 
   return (
     <View style={styles.container}>
-      <ShoppingList />
+      <ShoppingList
+        shoppingList={shoppingList}
+        setShoppingList={setShoppingList}
+      />
     </View>
   );
 }
