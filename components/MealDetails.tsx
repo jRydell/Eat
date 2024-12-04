@@ -41,7 +41,7 @@ function MealDetails({
     }
   }, [mealId]);
 
-  if (!mealId) return null;
+  if (!mealId || !meal) return null;
 
   const ingredients = extractIngredients(meal);
 
