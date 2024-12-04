@@ -25,9 +25,6 @@ type SwipeableListItemProps = {
 export const SwipeableListItem = ({
   children,
   onDelete,
-  deleteText = "Delete", // Default text for delete button
-  deleteTextStyle,
-  deleteContainerStyle,
   swipeThreshold = 100, // Default swipe threshold
 }: SwipeableListItemProps) => {
   // Initialize a ref to track the X translation value for swipe animation
@@ -56,7 +53,7 @@ export const SwipeableListItem = ({
         if (gestureState.dx < -swipeThreshold) {
           // If swipe exceeds the threshold, animate smoothly off the screen and call onDelete
           Animated.timing(translateX, {
-            toValue: -500, // Move the item far off-screen
+            toValue: -400, // Move the item far off-screen
             duration: 200,
             useNativeDriver: true,
           }).start(() => {
@@ -77,11 +74,8 @@ export const SwipeableListItem = ({
   // Render the swipeable list item component
   return (
     <View style={styles.container}>
-      {/* Hidden container for delete button, visible when swiped */}
-
-      {/* Main animated view containing the child elements */}
       <Animated.View
-        style={[styles.animatedView, { transform: [{ translateX }] }]}
+        style={{ transform: [{ translateX }] }}
         {...panResponder.panHandlers}
       >
         {children}
@@ -94,11 +88,6 @@ export const SwipeableListItem = ({
 const styles = StyleSheet.create({
   container: {
     position: "relative", // Allows positioning of delete button overlay
-    backgroundColor: "#fff",
-  },
-
-  animatedView: {
-    backgroundColor: "#fff", // Background for main view
   },
 });
 

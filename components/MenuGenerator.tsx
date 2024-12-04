@@ -105,12 +105,7 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 16,
   },
-  deleteButton: {
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#FF0000",
-    width: 80,
-  },
+
   title: {
     fontSize: 24,
     fontWeight: "bold",
