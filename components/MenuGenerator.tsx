@@ -4,9 +4,10 @@ import {
   saveShoppingList,
   loadShoppingList,
   saveMenu,
-  getMenu,
+  loadMenu,
 } from "../utils/storage";
-import { extractIngredients, fetchRandomMeal } from "../services/api";
+import { fetchRandomMeal } from "../services/api";
+import { extractIngredients } from "../services/mealHelpers";
 import MealCard from "../components/MealCard"; // Import MealCard
 
 function MenuGenerator() {
@@ -22,7 +23,7 @@ function MenuGenerator() {
 
   useEffect(() => {
     const fetchMenu = async () => {
-      const storedMenu = await getMenu();
+      const storedMenu = await loadMenu();
       if (storedMenu) {
         setMenu(storedMenu);
       }

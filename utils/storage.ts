@@ -1,10 +1,9 @@
-// services/storage.ts
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const SHOPPING_LIST_KEY = "shopping_list";
-const WEEKLY_MENU_KEY = "weeklyMenu";
+const WEEKLY_MENU_KEY = "weekly_menu";
 
-// Save the shopping list
+// Save shopping list
 export async function saveShoppingList(list: any[]) {
   try {
     await AsyncStorage.setItem(SHOPPING_LIST_KEY, JSON.stringify(list));
@@ -13,7 +12,7 @@ export async function saveShoppingList(list: any[]) {
   }
 }
 
-// Load the shopping list
+// Load shopping list
 export async function loadShoppingList() {
   try {
     const data = await AsyncStorage.getItem(SHOPPING_LIST_KEY);
@@ -24,7 +23,7 @@ export async function loadShoppingList() {
   }
 }
 
-// Save the menu
+// Save menu
 export const saveMenu = async (menu: any) => {
   try {
     const menuJSON = JSON.stringify(menu);
@@ -34,8 +33,8 @@ export const saveMenu = async (menu: any) => {
   }
 };
 
-// Load the menu
-export const getMenu = async () => {
+// Load menu
+export const loadMenu = async () => {
   try {
     const menuJSON = await AsyncStorage.getItem(WEEKLY_MENU_KEY);
     return menuJSON != null ? JSON.parse(menuJSON) : null;
@@ -43,17 +42,4 @@ export const getMenu = async () => {
     console.error("Failed to load menu", error);
     return null;
   }
-};
-
-// Generate shoppinglist
-export const generateShoppingList = (menu: any[]) => {
-  let shoppingList: string[] = [];
-  menu.forEach((meal) => {
-    meal.ingredients.forEach((ingredient: string) => {
-      if (!shoppingList.includes(ingredient)) {
-        shoppingList.push(ingredient);
-      }
-    });
-  });
-  return shoppingList;
 };

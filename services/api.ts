@@ -12,20 +12,3 @@ export async function fetchRandomMeal() {
     return null;
   }
 }
-
-export const extractIngredients = (meal: any) => {
-  const ingredients: string[] = [];
-
-  // Loop through the ingredients (MealDB provides ingredients as ingredientX and measureX)
-  for (let i = 1; i <= 20; i++) {
-    const ingredient = meal[`strIngredient${i}`];
-    const measure = meal[`strMeasure${i}`];
-
-    // If the ingredient exists, add it to the list with the measure (if available)
-    if (ingredient) {
-      ingredients.push(`${measure ? measure : ""} ${ingredient}`);
-    }
-  }
-
-  return ingredients;
-};
