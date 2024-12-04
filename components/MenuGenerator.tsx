@@ -10,7 +10,7 @@ import { fetchRandomMeal } from "../services/api";
 import { extractIngredients } from "../services/mealHelpers";
 import MealCard from "../components/MealCard";
 import { SwipeableListItem } from "../components/SwipeableListItem";
-
+import MealDetails from "../components/MealDetails";
 function MenuGenerator() {
   const [menu, setMenu] = useState<
     {
@@ -21,6 +21,14 @@ function MenuGenerator() {
       strArea: string;
     }[]
   >([]);
+  const [modalVisible, setModalVisible] = useState(false);
+  const [selectedMeal, setSelectedMeal] = useState<{
+    idMeal: string;
+    strMeal: string;
+    strMealThumb: string;
+    strCategory: string;
+    strArea: string;
+  } | null>(null);
 
   useEffect(() => {
     const fetchMenu = async () => {
@@ -79,6 +87,22 @@ function MenuGenerator() {
     saveMenu(updatedMenu);
   };
 
+  const openModal = (meal: {
+    idMeal: string;
+    strMeal: string;
+    strMealThumb: string;
+    strCategory: string;
+    strArea: string;
+  }) => {
+    setSelectedMeal(meal);
+    setModalVisible(true);
+  };
+
+  const closeModal = () => {
+    setSelectedMeal(null);
+    setModalVisible(false);
+  };
+
   return (
     <View style={styles.container}>
       <FlatList
@@ -91,11 +115,17 @@ function MenuGenerator() {
               strMealThumb={item.strMealThumb}
               strCategory={item.strCategory}
               strArea={item.strArea}
+              onPress={() => openModal(item)}
             />
           </SwipeableListItem>
         )}
       />
       <Button title="Add Random Meal" onPress={addMeal} />
+      <MealDetails
+        visible={modalVisible}
+        onClose={closeModal}
+        meal={selectedMeal || { strMeal: "", strCategory: "", strArea: "" }}
+      />
     </View>
   );
 }
