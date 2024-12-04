@@ -124,7 +124,8 @@ function MenuGenerator() {
       <MealDetails
         visible={modalVisible}
         onClose={closeModal}
-        meal={selectedMeal || { strMeal: "", strCategory: "", strArea: "" }}
+        mealId={selectedMeal?.idMeal || ""}
+        strMealThumb={selectedMeal?.strMealThumb || ""}
       />
     </View>
   );
