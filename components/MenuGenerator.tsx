@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, Button, FlatList, StyleSheet } from "react-native";
+import { View, Button, FlatList, StyleSheet } from "react-native";
 import {
   saveShoppingList,
   loadShoppingList,
@@ -8,7 +8,7 @@ import {
 } from "../utils/storage";
 import { fetchRandomMeal } from "../services/api";
 import { extractIngredients } from "../services/mealHelpers";
-import MealCard from "../components/MealCard"; // Import MealCard
+import MealCard from "../components/MealCard";
 
 function MenuGenerator() {
   const [menu, setMenu] = useState<
