@@ -8,8 +8,8 @@ type ShoppingListProps = {
 };
 
 function ShoppingList({ shoppingList, setShoppingList }: ShoppingListProps) {
-  const removeItemFromList = async (item: string) => {
-    const updatedList = shoppingList.filter((i: string) => i !== item);
+  const deleteListItem = async (item: string) => {
+    const updatedList = shoppingList.filter((item: string) => item !== item);
     setShoppingList(updatedList);
     await saveShoppingList(updatedList);
   };
@@ -21,7 +21,7 @@ function ShoppingList({ shoppingList, setShoppingList }: ShoppingListProps) {
       renderItem={({ item }) => (
         <View style={styles.item}>
           <Text style={styles.itemText}>{item}</Text>
-          <Button title="Remove" onPress={() => removeItemFromList(item)} />
+          <Button title="Remove" onPress={() => deleteListItem(item)} />
         </View>
       )}
     />

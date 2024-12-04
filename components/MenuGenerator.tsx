@@ -9,6 +9,7 @@ import {
 import { fetchRandomMeal } from "../services/api";
 import { extractIngredients } from "../services/mealHelpers";
 import MealCard from "../components/MealCard";
+import { SwipeableListItem } from "../components/SwipeableListItem";
 
 function MenuGenerator() {
   const [menu, setMenu] = useState<
@@ -23,18 +24,24 @@ function MenuGenerator() {
 
   useEffect(() => {
     const fetchMenu = async () => {
-      const storedMenu = await loadMenu();
-      if (storedMenu) {
-        setMenu(storedMenu);
+      try {
+        const storedMenu = await loadMenu();
+        console.log("Loaded menu:", storedMenu);
+        if (storedMenu) {
+          setMenu(storedMenu);
+        }
+      } catch (error) {
+        console.error("Error loading menu:", error);
       }
     };
     fetchMenu();
   }, []);
+
   const addMeal = async () => {
     try {
       const meal = await fetchRandomMeal();
+      console.log("Fetched meal:", meal);
       if (meal) {
-        // Extract ingredients from the recipe and update the shopping list
         const ingredients = extractIngredients(meal);
         console.log("Extracted ingredients:", ingredients);
 
@@ -47,7 +54,6 @@ function MenuGenerator() {
         await saveShoppingList(updatedShoppingList);
         console.log("Shopping list saved successfully");
 
-        // Add the meal to the weekly menu
         const updatedMenu = [
           ...menu,
           {
@@ -67,18 +73,26 @@ function MenuGenerator() {
     }
   };
 
+  const deleteMeal = (idMeal: string) => {
+    const updatedMenu = menu.filter((meal) => meal.idMeal !== idMeal);
+    setMenu(updatedMenu);
+    saveMenu(updatedMenu);
+  };
+
   return (
     <View style={styles.container}>
       <FlatList
         data={menu}
         keyExtractor={(item) => item.idMeal.toString()}
         renderItem={({ item }) => (
-          <MealCard
-            strMeal={item.strMeal}
-            strMealThumb={item.strMealThumb}
-            strCategory={item.strCategory}
-            strArea={item.strArea}
-          />
+          <SwipeableListItem onDelete={() => deleteMeal(item.idMeal)}>
+            <MealCard
+              strMeal={item.strMeal}
+              strMealThumb={item.strMealThumb}
+              strCategory={item.strCategory}
+              strArea={item.strArea}
+            />
+          </SwipeableListItem>
         )}
       />
       <Button title="Add Random Meal" onPress={addMeal} />
@@ -90,6 +104,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 16,
+  },
+  deleteButton: {
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#FF0000",
+    width: 80,
   },
   title: {
     fontSize: 24,

@@ -10,7 +10,7 @@ export const generateShoppingList = (menu: any[]) => {
   });
   return shoppingList;
 };
-
+// Extract ingredients
 export const extractIngredients = (meal: any) => {
   const ingredients: string[] = [];
 
