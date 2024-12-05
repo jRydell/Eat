@@ -25,7 +25,7 @@ function ShoppingList() {
   return (
     <FlatList
       data={shoppingList}
-      keyExtractor={(item, index) => index.toString()}
+      keyExtractor={(index) => index.toString()}
       renderItem={({ item, index }) => (
         <View style={styles.item}>
           <Text style={styles.itemText}>{item}</Text>

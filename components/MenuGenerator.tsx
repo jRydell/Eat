@@ -32,17 +32,7 @@ function MenuGenerator() {
       const meal = await fetchRandomMeal();
       console.log("Fetched meal:", meal);
       if (meal) {
-        const updatedMenu = [
-          ...menu,
-          {
-            idMeal: meal.idMeal,
-            strMeal: meal.strMeal,
-            strMealThumb: meal.strMealThumb,
-            strCategory: meal.strCategory,
-            strArea: meal.strArea,
-            strInstructions: meal.strInstructions,
-          },
-        ];
+        const updatedMenu = [...menu, meal];
         setMenu(updatedMenu);
         await saveMenu(updatedMenu);
         console.log("Menu saved successfully");
@@ -72,16 +62,10 @@ function MenuGenerator() {
     <View style={styles.container}>
       <FlatList
         data={menu}
-        keyExtractor={(item) => item.idMeal.toString()}
+        keyExtractor={(item) => item.idMeal}
         renderItem={({ item }) => (
           <SwipeableListItem onDelete={() => deleteMeal(item.idMeal)}>
-            <MealCard
-              strMeal={item.strMeal}
-              strMealThumb={item.strMealThumb}
-              strCategory={item.strCategory}
-              strArea={item.strArea}
-              onPress={() => openModal(item)}
-            />
+            <MealCard meal={item} onPress={() => openModal(item)} />
           </SwipeableListItem>
         )}
       />

@@ -1,28 +1,20 @@
+import { Meal } from "@/types/meal";
 import React from "react";
 import { View, Text, Image, StyleSheet, Pressable } from "react-native";
 
 type MealCardProps = {
-  strMeal: string;
-  strMealThumb: string;
-  strCategory: string;
-  strArea: string;
+  meal: Meal;
   onPress: () => void;
 };
 
-function MealCard({
-  strMeal,
-  strMealThumb,
-  strCategory,
-  strArea,
-  onPress,
-}: MealCardProps) {
+function MealCard({ meal, onPress }: MealCardProps) {
   return (
     <Pressable onPress={onPress}>
       <View style={styles.card}>
-        <Image source={{ uri: strMealThumb }} style={styles.image} />
-        <Text style={styles.title}>{strMeal}</Text>
-        <Text>{strCategory}</Text>
-        <Text>{strArea}</Text>
+        <Image source={{ uri: meal.strMealThumb }} style={styles.image} />
+        <Text style={styles.title}>{meal.strMeal}</Text>
+        <Text>{meal.strCategory}</Text>
+        <Text>{meal.strArea}</Text>
       </View>
     </Pressable>
   );
