@@ -7,7 +7,6 @@ import {
   loadMenu,
 } from "../utils/storage";
 import { fetchRandomMeal } from "../services/api";
-import { extractIngredients } from "../services/mealHelpers";
 import MealCard from "../components/MealCard";
 import { SwipeableListItem } from "../components/SwipeableListItem";
 import MealDetails from "../components/MealDetails";

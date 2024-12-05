@@ -1,12 +1,16 @@
-export const extractIngredients = (meal: any) => {
+type Ingredient = {
+  [key: string]: string | undefined;
+};
+
+export const extractIngredients = (ingredient: Ingredient) => {
   const ingredients: string[] = [];
 
   for (let i = 1; i <= 20; i++) {
-    const ingredient = meal[`strIngredient${i}`];
-    const measure = meal[`strMeasure${i}`];
+    const ing = ingredient[`strIngredient${i}`];
+    const measure = ingredient[`strMeasure${i}`];
 
-    if (ingredient) {
-      ingredients.push(`${measure ? measure : ""} ${ingredient}`);
+    if (ing) {
+      ingredients.push(`${measure ? measure : ""} ${ing}`);
     }
   }
 
