@@ -25,10 +25,10 @@ function ShoppingList() {
   return (
     <FlatList
       data={shoppingList}
-      keyExtractor={(index) => index.toString()}
-      renderItem={({ item, index }) => (
+      keyExtractor={(ingredient, index) => `${ingredient}-${index}`}
+      renderItem={({ item: ingredient, index }) => (
         <View style={styles.item}>
-          <Text style={styles.itemText}>{item}</Text>
+          <Text style={styles.itemText}>{ingredient}</Text>
           <Button title="Remove" onPress={() => deleteIngredient(index)} />
         </View>
       )}

@@ -54,7 +54,7 @@ export const SwipeableListItem = ({
           // If swipe exceeds the threshold, animate smoothly off the screen and call onDelete
           Animated.timing(translateX, {
             toValue: -400, // Move the item far off-screen
-            duration: 200,
+            duration: 300,
             useNativeDriver: true,
           }).start(() => {
             onDelete(); // Call the delete function passed in props

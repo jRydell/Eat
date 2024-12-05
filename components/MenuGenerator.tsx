@@ -66,10 +66,13 @@ function MenuGenerator() {
     <View style={styles.container}>
       <FlatList
         data={menu}
-        keyExtractor={(item) => item.idMeal}
-        renderItem={({ item }) => (
-          <SwipeableListItem onDelete={() => deleteMeal(item.idMeal)}>
-            <MealCard meal={item} onPress={() => openModal(item)} />
+        keyExtractor={(meal) => meal.idMeal}
+        renderItem={({ item: meal }) => (
+          <SwipeableListItem
+            onDelete={() => deleteMeal(meal.idMeal)}
+            swipeThreshold={75}
+          >
+            <MealCard meal={meal} onPress={() => openModal(meal)} />
           </SwipeableListItem>
         )}
       />
