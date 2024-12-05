@@ -1,14 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, Text, Button, FlatList, StyleSheet } from "react-native";
-import { saveShoppingList } from "../utils/storage";
+import { useFocusEffect } from "@react-navigation/native";
+import { loadShoppingList, saveShoppingList } from "../utils/storage";
 
-type ShoppingListProps = {
-  shoppingList: string[];
-  setShoppingList: React.Dispatch<React.SetStateAction<string[]>>;
-};
+function ShoppingList() {
+  const [shoppingList, setShoppingList] = useState<string[]>([]);
 
-function ShoppingList({ shoppingList, setShoppingList }: ShoppingListProps) {
-  const removeItemFromList = async (item: string) => {
+  useFocusEffect(
+    React.useCallback(() => {
+      const fetchShoppingList = async () => {
+        const list = await loadShoppingList();
+        setShoppingList(list);
+      };
+      fetchShoppingList();
+    }, [])
+  );
+
+  const deleteItem = async (item: string) => {
     const updatedList = shoppingList.filter((i: string) => i !== item);
     setShoppingList(updatedList);
     await saveShoppingList(updatedList);
@@ -21,7 +29,7 @@ function ShoppingList({ shoppingList, setShoppingList }: ShoppingListProps) {
       renderItem={({ item }) => (
         <View style={styles.item}>
           <Text style={styles.itemText}>{item}</Text>
-          <Button title="Remove" onPress={() => removeItemFromList(item)} />
+          <Button title="Remove" onPress={() => deleteItem(item)} />
         </View>
       )}
     />
