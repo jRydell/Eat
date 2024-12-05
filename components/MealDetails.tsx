@@ -74,7 +74,7 @@ function MealDetails({ visible, onClose, mealId }: MealDetailsProps) {
         ) : (
           <ScrollView contentContainerStyle={styles.scrollViewContent}>
             <Text style={styles.modalText}>{meal.strMeal}</Text>
-            <Image source={meal.strMealThumb} style={styles.image} />
+            <Image source={{ uri: meal.strMealThumb }} style={styles.image} />
             <Text style={styles.sectionTitle}>Ingredients:</Text>
             {ingredients.map((ingredient: string, index: number) => (
               <Text key={index} style={styles.ingredientText}>
