@@ -1,13 +1,13 @@
 import React from "react";
 import { View, Text, Image, StyleSheet, Pressable } from "react-native";
 
-interface MealCardProps {
+type MealCardProps = {
   strMeal: string;
   strMealThumb: string;
   strCategory: string;
   strArea: string;
   onPress: () => void;
-}
+};
 
 function MealCard({
   strMeal,
