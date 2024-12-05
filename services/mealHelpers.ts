@@ -1,16 +1,14 @@
-type Ingredient = {
-  [key: string]: string | undefined;
-};
+import { Meal } from "@/types/meal";
 
-export const extractIngredients = (ingredient: Ingredient) => {
+export const extractIngredients = (meal: Meal) => {
   const ingredients: string[] = [];
 
   for (let i = 1; i <= 20; i++) {
-    const ing = ingredient[`strIngredient${i}`];
-    const measure = ingredient[`strMeasure${i}`];
+    const ingredient = meal[`strIngredient${i}`];
+    const measure = meal[`strMeasure${i}`];
 
-    if (ing) {
-      ingredients.push(`${measure ? measure : ""} ${ing}`);
+    if (meal) {
+      ingredients.push(`${measure ? measure : ""} ${ingredient}`);
     }
   }
 
