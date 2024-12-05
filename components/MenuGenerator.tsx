@@ -42,10 +42,14 @@ function MenuGenerator() {
     }
   };
 
-  const deleteMeal = (idMeal: string) => {
-    const updatedMenu = menu.filter((meal) => meal.idMeal !== idMeal);
-    setMenu(updatedMenu);
-    saveMenu(updatedMenu);
+  const deleteMeal = async (idMeal: string) => {
+    const storedMenu = await loadMenu();
+    if (storedMenu) {
+      const updatedMenu = storedMenu.filter((meal) => meal.idMeal !== idMeal);
+      await saveMenu(updatedMenu);
+      setMenu(updatedMenu);
+      console.log("meal deleted");
+    }
   };
 
   const openModal = (meal: Meal) => {
