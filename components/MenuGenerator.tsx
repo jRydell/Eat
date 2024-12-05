@@ -1,11 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { View, Button, FlatList, StyleSheet } from "react-native";
-import {
-  saveShoppingList,
-  loadShoppingList,
-  saveMenu,
-  loadMenu,
-} from "../utils/storage";
+import { saveMenu, loadMenu } from "../utils/storage";
 import { fetchRandomMeal } from "../services/api";
 import MealCard from "../components/MealCard";
 import { SwipeableListItem } from "../components/SwipeableListItem";
