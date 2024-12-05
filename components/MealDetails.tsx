@@ -10,22 +10,16 @@ import {
   Image,
 } from "react-native";
 import { fetchMealById } from "../services/api";
-import { extractIngredients } from "../services/mealHelpers";
 import { loadShoppingList, saveShoppingList } from "@/utils/storage";
+import { Meal } from "@/types/meal";
 
 type MealDetailsProps = {
   visible: boolean;
   onClose: () => void;
   mealId: string;
-  strMealThumb: string;
 };
 
-function MealDetails({
-  visible,
-  onClose,
-  mealId,
-  strMealThumb,
-}: MealDetailsProps) {
+function MealDetails({ visible, onClose, mealId }: MealDetailsProps) {
   const [meal, setMeal] = useState<any>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
@@ -44,11 +38,26 @@ function MealDetails({
 
   if (!mealId || !meal) return null;
 
+  const extractIngredients = (meal: Meal) => {
+    const ingredients: string[] = [];
+
+    for (let i = 1; i <= 20; i++) {
+      const ingredient = meal[`strIngredient${i}`];
+      const measure = meal[`strMeasure${i}`];
+
+      if (ingredient) {
+        ingredients.push(`${measure ? measure : ""} ${ingredient}`);
+      }
+    }
+    return ingredients;
+  };
+
   const ingredients = extractIngredients(meal);
 
   const addIngredients = async () => {
     try {
       const currentList = await loadShoppingList();
+      const ingredients = extractIngredients(meal);
       const updatedList = [...currentList, ...ingredients];
       await saveShoppingList(updatedList);
       alert("Ingredients added to shopping list!");
@@ -65,9 +74,9 @@ function MealDetails({
         ) : (
           <ScrollView contentContainerStyle={styles.scrollViewContent}>
             <Text style={styles.modalText}>{meal.strMeal}</Text>
-            <Image source={{ uri: strMealThumb }} style={styles.image} />
+            <Image source={meal.strMealThumb} style={styles.image} />
             <Text style={styles.sectionTitle}>Ingredients:</Text>
-            {ingredients.map((ingredient, index) => (
+            {ingredients.map((ingredient: string, index: number) => (
               <Text key={index} style={styles.ingredientText}>
                 {ingredient}
               </Text>

@@ -10,24 +10,12 @@ import { fetchRandomMeal } from "../services/api";
 import MealCard from "../components/MealCard";
 import { SwipeableListItem } from "../components/SwipeableListItem";
 import MealDetails from "../components/MealDetails";
+import { Meal } from "@/types/meal";
+
 function MenuGenerator() {
-  const [menu, setMenu] = useState<
-    {
-      idMeal: string;
-      strMeal: string;
-      strMealThumb: string;
-      strCategory: string;
-      strArea: string;
-    }[]
-  >([]);
+  const [menu, setMenu] = useState<Meal[]>([]);
   const [modalVisible, setModalVisible] = useState(false);
-  const [selectedMeal, setSelectedMeal] = useState<{
-    idMeal: string;
-    strMeal: string;
-    strMealThumb: string;
-    strCategory: string;
-    strArea: string;
-  } | null>(null);
+  const [selectedMeal, setSelectedMeal] = useState<Meal | null>(null);
 
   useEffect(() => {
     const fetchMenu = async () => {
@@ -57,6 +45,7 @@ function MenuGenerator() {
             strMealThumb: meal.strMealThumb,
             strCategory: meal.strCategory,
             strArea: meal.strArea,
+            strInstructions: meal.strInstructions,
           },
         ];
         setMenu(updatedMenu);
@@ -74,13 +63,7 @@ function MenuGenerator() {
     saveMenu(updatedMenu);
   };
 
-  const openModal = (meal: {
-    idMeal: string;
-    strMeal: string;
-    strMealThumb: string;
-    strCategory: string;
-    strArea: string;
-  }) => {
+  const openModal = (meal: Meal) => {
     setSelectedMeal(meal);
     setModalVisible(true);
   };
@@ -112,7 +95,6 @@ function MenuGenerator() {
         visible={modalVisible}
         onClose={closeModal}
         mealId={selectedMeal?.idMeal || ""}
-        strMealThumb={selectedMeal?.strMealThumb || ""}
       />
     </View>
   );

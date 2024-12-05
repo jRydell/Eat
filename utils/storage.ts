@@ -1,10 +1,11 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { Meal } from "@/types/meal";
 
 const SHOPPING_LIST_KEY = "shopping_list";
 const WEEKLY_MENU_KEY = "weekly_menu";
 
 // Save shopping list
-export async function saveShoppingList(list: any[]) {
+export async function saveShoppingList(list: string[]) {
   try {
     await AsyncStorage.setItem(SHOPPING_LIST_KEY, JSON.stringify(list));
   } catch (error) {
@@ -13,7 +14,7 @@ export async function saveShoppingList(list: any[]) {
 }
 
 // Load shopping list
-export async function loadShoppingList() {
+export async function loadShoppingList(): Promise<string[]> {
   try {
     const data = await AsyncStorage.getItem(SHOPPING_LIST_KEY);
     return data ? JSON.parse(data) : [];
@@ -24,7 +25,7 @@ export async function loadShoppingList() {
 }
 
 // Save menu
-export const saveMenu = async (menu: any) => {
+export const saveMenu = async (menu: Meal[]) => {
   try {
     const menuJSON = JSON.stringify(menu);
     await AsyncStorage.setItem(WEEKLY_MENU_KEY, menuJSON);
@@ -34,7 +35,7 @@ export const saveMenu = async (menu: any) => {
 };
 
 // Load menu
-export const loadMenu = async () => {
+export const loadMenu = async (): Promise<Meal[] | null> => {
   try {
     const menuJSON = await AsyncStorage.getItem(WEEKLY_MENU_KEY);
     return menuJSON != null ? JSON.parse(menuJSON) : null;

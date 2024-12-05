@@ -16,8 +16,8 @@ function ShoppingList() {
     }, [])
   );
 
-  const deleteItem = async (item: string) => {
-    const updatedList = shoppingList.filter((listItem) => listItem !== item);
+  const deleteIngredient = async (index: number) => {
+    const updatedList = shoppingList.filter((_, i) => i !== index);
     setShoppingList(updatedList);
     await saveShoppingList(updatedList);
   };
@@ -26,10 +26,10 @@ function ShoppingList() {
     <FlatList
       data={shoppingList}
       keyExtractor={(item, index) => index.toString()}
-      renderItem={({ item }) => (
+      renderItem={({ item, index }) => (
         <View style={styles.item}>
           <Text style={styles.itemText}>{item}</Text>
-          <Button title="Remove" onPress={() => deleteItem(item)} />
+          <Button title="Remove" onPress={() => deleteIngredient(index)} />
         </View>
       )}
     />
