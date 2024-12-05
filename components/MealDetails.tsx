@@ -20,7 +20,7 @@ type MealDetailsProps = {
 };
 
 function MealDetails({ visible, onClose, mealId }: MealDetailsProps) {
-  const [meal, setMeal] = useState<any>(null);
+  const [meal, setMeal] = useState<Meal | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
