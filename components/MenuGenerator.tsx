@@ -50,18 +50,6 @@ function MenuGenerator() {
       const meal = await fetchRandomMeal();
       console.log("Fetched meal:", meal);
       if (meal) {
-        const ingredients = extractIngredients(meal);
-        console.log("Extracted ingredients:", ingredients);
-
-        const storedList = await loadShoppingList();
-        console.log("Stored shopping list before update:", storedList);
-
-        const updatedShoppingList = [...storedList, ...ingredients];
-        console.log("Updated shopping list:", updatedShoppingList);
-
-        await saveShoppingList(updatedShoppingList);
-        console.log("Shopping list saved successfully");
-
         const updatedMenu = [
           ...menu,
           {

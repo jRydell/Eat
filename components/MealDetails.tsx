@@ -11,6 +11,7 @@ import {
 } from "react-native";
 import { fetchMealById } from "../services/api";
 import { extractIngredients } from "../services/mealHelpers";
+import { loadShoppingList, saveShoppingList } from "@/utils/storage";
 
 type MealDetailsProps = {
   visible: boolean;
@@ -45,6 +46,17 @@ function MealDetails({
 
   const ingredients = extractIngredients(meal);
 
+  const addIngredients = async () => {
+    try {
+      const currentList = await loadShoppingList();
+      const updatedList = [...currentList, ...ingredients];
+      await saveShoppingList(updatedList);
+      alert("Ingredients added to shopping list!");
+    } catch (error) {
+      console.error("Error adding ingredients to shopping list:", error);
+    }
+  };
+
   return (
     <Modal animationType="slide" visible={visible} onRequestClose={onClose}>
       <View style={styles.modalView}>
@@ -60,6 +72,9 @@ function MealDetails({
                 {ingredient}
               </Text>
             ))}
+            <View style={styles.button}>
+              <Button title="Add to shopping list" onPress={addIngredients} />
+            </View>
             <Text style={styles.sectionTitle}>Instructions:</Text>
             <Text>{meal.strInstructions}</Text>
             <View style={styles.button}>
@@ -106,6 +121,7 @@ const styles = StyleSheet.create({
   },
   button: {
     marginTop: 15,
+    backgroundColor: "green",
   },
   image: {
     width: "100%",

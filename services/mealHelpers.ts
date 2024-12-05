@@ -1,16 +1,3 @@
-// Generate shoppinglist
-export const generateShoppingList = (menu: any[]) => {
-  let shoppingList: string[] = [];
-  menu.forEach((meal) => {
-    meal.ingredients.forEach((ingredient: string) => {
-      if (!shoppingList.includes(ingredient)) {
-        shoppingList.push(ingredient);
-      }
-    });
-  });
-  return shoppingList;
-};
-
 export const extractIngredients = (meal: any) => {
   const ingredients: string[] = [];
 

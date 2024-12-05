@@ -17,7 +17,7 @@ function ShoppingList() {
   );
 
   const deleteItem = async (item: string) => {
-    const updatedList = shoppingList.filter((item: string) => item !== item);
+    const updatedList = shoppingList.filter((listItem) => listItem !== item);
     setShoppingList(updatedList);
     await saveShoppingList(updatedList);
   };
