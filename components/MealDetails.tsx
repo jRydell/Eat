@@ -8,6 +8,8 @@ import {
   ActivityIndicator,
   ScrollView,
   Image,
+  Linking,
+  Pressable,
 } from "react-native";
 import { fetchMealById } from "../services/api";
 import { loadShoppingList, saveShoppingList } from "@/utils/storage";
@@ -61,6 +63,12 @@ function MealDetails({ visible, onClose, mealId }: MealDetailsProps) {
     alert("Ingredients added to shopping list!");
   };
 
+  const openYoutubeLink = () => {
+    if (meal.strYoutube) {
+      Linking.openURL(meal.strYoutube);
+    }
+  };
+
   return (
     <Modal animationType="slide" visible={visible} onRequestClose={onClose}>
       <View style={styles.modalView}>
@@ -70,6 +78,14 @@ function MealDetails({ visible, onClose, mealId }: MealDetailsProps) {
           <ScrollView contentContainerStyle={styles.scrollViewContent}>
             <Text style={styles.modalText}>{meal.strMeal}</Text>
             <Image source={{ uri: meal.strMealThumb }} style={styles.image} />
+            {meal.strYoutube && (
+              <View>
+                <Pressable onPress={openYoutubeLink}>
+                  <Text style={styles.sectionTitle}>Video Instructions:</Text>
+                  <Text>{meal.strYoutube}</Text>
+                </Pressable>
+              </View>
+            )}
             <Text style={styles.sectionTitle}>Ingredients:</Text>
             {ingredients.map((ingredient: string, index: number) => (
               <Text key={index} style={styles.ingredientText}>

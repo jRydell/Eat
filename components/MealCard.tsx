@@ -16,6 +16,8 @@ function MealCard({ meal, onPress }: MealCardProps) {
         <View style={styles.card}>
           <Image source={{ uri: meal.strMealThumb }} style={styles.image} />
           <Text style={styles.title}>{meal.strMeal}</Text>
+          <Text>{meal.strCategory}</Text>
+          <Text>{meal.strArea}</Text>
         </View>
       </Pressable>
     </>
