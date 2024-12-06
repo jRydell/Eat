@@ -4,7 +4,7 @@ export default function home() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Welcome to Eat</Text>
-      <Text style={styles.subtitle}>Plan meals and organize your week!</Text>
+      <Text style={styles.subtitle}>-Whats for dinner?</Text>
     </View>
   );
 }
