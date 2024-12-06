@@ -3,6 +3,27 @@ import { Meal } from "@/types/meal";
 
 const SHOPPING_LIST_KEY = "shopping_list";
 const WEEKLY_MENU_KEY = "weekly_menu";
+const MEAL_DAY_KEY = "meal_";
+
+// Save the weekday
+export async function saveWeekday(mealId: string, day: string): Promise<void> {
+  try {
+    await AsyncStorage.setItem(`${MEAL_DAY_KEY}${mealId}`, day);
+  } catch (error) {
+    console.error(`Failed to save selected day for meal ${mealId}:`, error);
+  }
+}
+
+// Load the weekday
+export async function loadWeekday(mealId: string): Promise<string | null> {
+  try {
+    const savedDay = await AsyncStorage.getItem(`${MEAL_DAY_KEY}${mealId}`);
+    return savedDay;
+  } catch (error) {
+    console.error(`Failed to load selected day for meal ${mealId}:`, error);
+    return null;
+  }
+}
 
 // Save shopping list
 export async function saveShoppingList(list: string[]) {

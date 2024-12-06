@@ -1,6 +1,7 @@
 import { Meal } from "@/types/meal";
 import React from "react";
 import { View, Text, Image, StyleSheet, Pressable } from "react-native";
+import DaySelector from "./DaySelector";
 
 type MealCardProps = {
   meal: Meal;
@@ -9,19 +10,22 @@ type MealCardProps = {
 
 function MealCard({ meal, onPress }: MealCardProps) {
   return (
-    <Pressable onPress={onPress}>
-      <View style={styles.card}>
-        <Image source={{ uri: meal.strMealThumb }} style={styles.image} />
-        <Text style={styles.title}>{meal.strMeal}</Text>
-        <Text>{meal.strCategory}</Text>
-        <Text>{meal.strArea}</Text>
-      </View>
-    </Pressable>
+    <>
+      <DaySelector mealId={meal.idMeal} />
+      <Pressable onPress={onPress}>
+        <View style={styles.card}>
+          <Image source={{ uri: meal.strMealThumb }} style={styles.image} />
+          <Text style={styles.title}>{meal.strMeal}</Text>
+        </View>
+      </Pressable>
+    </>
   );
 }
 
 const styles = StyleSheet.create({
   card: {
+    marginTop: 40,
+    marginBottom: 30,
     padding: 10,
     margin: 10,
     backgroundColor: "white",
