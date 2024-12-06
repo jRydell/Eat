@@ -4,9 +4,10 @@ An app that helps you create your weekly menu, buy the ingredients and cook your
 ## Get started
 
 1. Clone repository
-  ```bash
-https://github.com/jRydell/Eat.git
-  ```
+
+   ```bash
+    https://github.com/jRydell/Eat.git
+   ```
 3. Install dependencies
 
    ```bash
