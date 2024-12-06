@@ -106,6 +106,7 @@ const styles = StyleSheet.create({
   },
   scrollViewContent: {
     flexGrow: 1,
+    alignItems: "center",
   },
   modalText: {
     marginBottom: 15,
@@ -116,14 +117,19 @@ const styles = StyleSheet.create({
     marginTop: 15,
     fontSize: 18,
     fontWeight: "bold",
+    textAlign: "left", // Align text to the left
+    width: "100%",
   },
   ingredientText: {
     fontSize: 16,
     marginVertical: 2,
+    textAlign: "left", // Align text to the left
+    width: "100%", // Ensure the text takes the full width
   },
   button: {
     marginTop: 15,
-    backgroundColor: "green",
+    width: "60%",
+    alignItems: "center",
   },
   image: {
     width: "100%",
