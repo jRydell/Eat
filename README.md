@@ -1,7 +1,5 @@
-# Eat -Whats for dinner?
+# Eat 🍴
 An app that both helps you create your weekly menu, shopping list and how to cook the meals.
-
-
 
 ## Get started
 
@@ -14,7 +12,6 @@ An app that both helps you create your weekly menu, shopping list and how to coo
    ```bash
    npm install
    ```
-
 3. Start the app
 
    ```bash
