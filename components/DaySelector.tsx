@@ -38,7 +38,6 @@ const DaySelector = ({ mealId }: DaySelectorProps) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.label}>Meal for:</Text>
       <Picker
         selectedValue={selectedDay}
         onValueChange={(itemValue) => handleDayChange(itemValue)}
@@ -66,8 +65,8 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   picker: {
-    height: 50,
-    width: 150,
+    height: 60,
+    width: 165,
   },
   pickerItem: {
     fontSize: 16,

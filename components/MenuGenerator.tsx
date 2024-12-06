@@ -64,7 +64,9 @@ function MenuGenerator() {
           </SwipeableListItem>
         )}
       />
-      <Button title="Add Random Meal" onPress={addMeal} />
+      <View style={styles.buttonContainer}>
+        <Button title="Add Random Meal" onPress={addMeal} />
+      </View>
       <MealDetails
         visible={modalVisible}
         onClose={closeModal}
@@ -83,6 +85,9 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: "bold",
     marginBottom: 16,
+  },
+  buttonContainer: {
+    marginTop: 10,
   },
 });
 
