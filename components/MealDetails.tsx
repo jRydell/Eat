@@ -55,15 +55,10 @@ function MealDetails({ visible, onClose, mealId }: MealDetailsProps) {
   const ingredients = extractIngredients(meal);
 
   const addIngredients = async () => {
-    try {
-      const currentList = await loadShoppingList();
-      const ingredients = extractIngredients(meal);
-      const updatedList = [...currentList, ...ingredients];
-      await saveShoppingList(updatedList);
-      alert("Ingredients added to shopping list!");
-    } catch (error) {
-      console.error("Error adding ingredients to shopping list:", error);
-    }
+    const currentList = await loadShoppingList();
+    const updatedList = [...currentList, ...ingredients];
+    await saveShoppingList(updatedList);
+    alert("Ingredients added to shopping list!");
   };
 
   return (
@@ -111,8 +106,6 @@ const styles = StyleSheet.create({
   },
   scrollViewContent: {
     flexGrow: 1,
-    alignItems: "center",
-    justifyContent: "center",
   },
   modalText: {
     marginBottom: 15,

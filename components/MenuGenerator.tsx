@@ -14,31 +14,20 @@ function MenuGenerator() {
 
   useEffect(() => {
     const fetchMenu = async () => {
-      try {
-        const storedMenu = await loadMenu();
-        console.log("Loaded menu:", storedMenu);
-        if (storedMenu) {
-          setMenu(storedMenu);
-        }
-      } catch (error) {
-        console.error("Error loading menu:", error);
+      const storedMenu = await loadMenu();
+      if (storedMenu) {
+        setMenu(storedMenu);
       }
     };
     fetchMenu();
   }, []);
 
   const addMeal = async () => {
-    try {
-      const meal = await fetchRandomMeal();
-      console.log("Fetched meal:", meal);
-      if (meal) {
-        const updatedMenu = [...menu, meal];
-        setMenu(updatedMenu);
-        await saveMenu(updatedMenu);
-        console.log("Menu saved successfully");
-      }
-    } catch (error) {
-      console.error("Error adding meal:", error);
+    const meal = await fetchRandomMeal();
+    if (meal) {
+      const updatedMenu = [...menu, meal];
+      setMenu(updatedMenu);
+      await saveMenu(updatedMenu);
     }
   };
 
@@ -48,7 +37,6 @@ function MenuGenerator() {
       const updatedMenu = storedMenu.filter((meal) => meal.idMeal !== idMeal);
       await saveMenu(updatedMenu);
       setMenu(updatedMenu);
-      console.log("meal deleted");
     }
   };
 
@@ -91,7 +79,6 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 16,
   },
-
   title: {
     fontSize: 24,
     fontWeight: "bold",
