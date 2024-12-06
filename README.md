@@ -18,3 +18,5 @@ An app that both helps you create your weekly menu, shopping list and how to coo
     npx expo start
    ```
 
+4. Press the button to add a random meal, plann your week by choosing a day for the meal. Click the meal to view deatails and if  you want add the ingridents to your shoppinglist. Swipe left to delete meal.
+
