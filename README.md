@@ -1,6 +1,4 @@
-# Eat
-## -Whats for dinner?
-
+# Eat -Whats for dinner?
 An app that both helps you create your weekly menu, shopping list and how to cook the meals.
 
 
