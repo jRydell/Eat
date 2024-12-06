@@ -1,5 +1,5 @@
 # Eat 🍴
-An app that both helps you create your weekly menu, shopping list and how to cook the meals.
+An app that helps you create your weekly menu, buy the ingredients and cook your meal.
 
 ## Get started
 
