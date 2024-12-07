@@ -18,7 +18,7 @@ type SwipeableListItemProps = {
   swipeThreshold?: number;
 };
 
-export const SwipeableListItem = ({
+const SwipeableListItem = ({
   children,
   onDelete,
   swipeThreshold = 100,
@@ -78,3 +78,5 @@ const styles = StyleSheet.create({
     position: "relative",
   },
 });
+
+export default SwipeableListItem;

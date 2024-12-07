@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet } from "react-native";
 
-export default function home() {
+export default function HomeTab() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Welcome to Eat</Text>

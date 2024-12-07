@@ -21,7 +21,7 @@ type MealDetailsProps = {
   mealId: string;
 };
 
-function MealDetails({ visible, onClose, mealId }: MealDetailsProps) {
+const MealDetails = ({ visible, onClose, mealId }: MealDetailsProps) => {
   const [meal, setMeal] = useState<Meal | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
@@ -105,7 +105,7 @@ function MealDetails({ visible, onClose, mealId }: MealDetailsProps) {
       </View>
     </Modal>
   );
-}
+};
 
 const styles = StyleSheet.create({
   modalView: {

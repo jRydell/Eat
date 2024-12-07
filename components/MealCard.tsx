@@ -8,7 +8,7 @@ type MealCardProps = {
   onPress: () => void;
 };
 
-function MealCard({ meal, onPress }: MealCardProps) {
+const MealCard = ({ meal, onPress }: MealCardProps) => {
   return (
     <>
       <DaySelector mealId={meal.idMeal} />
@@ -22,7 +22,7 @@ function MealCard({ meal, onPress }: MealCardProps) {
       </Pressable>
     </>
   );
-}
+};
 
 const styles = StyleSheet.create({
   card: {

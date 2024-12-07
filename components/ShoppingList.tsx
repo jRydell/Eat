@@ -3,7 +3,7 @@ import { View, Text, Button, FlatList, StyleSheet } from "react-native";
 import { useFocusEffect } from "@react-navigation/native";
 import { loadShoppingList, saveShoppingList } from "../utils/storage";
 
-function ShoppingList() {
+const ShoppingList = () => {
   const [shoppingList, setShoppingList] = useState<string[]>([]);
 
   useFocusEffect(
@@ -34,7 +34,7 @@ function ShoppingList() {
       )}
     />
   );
-}
+};
 
 const styles = StyleSheet.create({
   item: {

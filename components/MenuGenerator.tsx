@@ -3,11 +3,11 @@ import { View, Button, FlatList, StyleSheet } from "react-native";
 import { saveMenu, loadMenu } from "../utils/storage";
 import { fetchRandomMeal } from "../services/api";
 import MealCard from "../components/MealCard";
-import { SwipeableListItem } from "../components/SwipeableListItem";
+import SwipeableListItem from "../components/SwipeableListItem";
 import MealDetails from "../components/MealDetails";
 import { Meal } from "@/types/meal";
 
-function MenuGenerator() {
+const MenuGenerator = () => {
   const [menu, setMenu] = useState<Meal[]>([]);
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedMeal, setSelectedMeal] = useState<Meal | null>(null);
@@ -74,7 +74,7 @@ function MenuGenerator() {
       />
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
