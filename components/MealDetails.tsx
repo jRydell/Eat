@@ -133,14 +133,13 @@ const styles = StyleSheet.create({
     marginTop: 15,
     fontSize: 18,
     fontWeight: "bold",
-    textAlign: "left", // Align text to the left
-    width: "100%",
+    textAlign: "left",
   },
   ingredientText: {
     fontSize: 16,
     marginVertical: 2,
-    textAlign: "left", // Align text to the left
-    width: "100%", // Ensure the text takes the full width
+    textAlign: "left",
+    width: "100%",
   },
   button: {
     marginTop: 15,
