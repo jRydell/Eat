@@ -56,10 +56,10 @@ npx expo start
 
 ## Tech Stack
 
-**_Framework: React Native (via Expo)_**
-**_Navigation: Expo router_**
-**_Storage: AsyncStorage for local storage_**
-**_API: TheMealDB for meal data_**
+- **Framework: React Native (via Expo)**
+- **Navigation: Expo router**
+- **Storage: AsyncStorage for local storage**
+- **API: TheMealDB for meal data**
 
 ## Contributing
 
