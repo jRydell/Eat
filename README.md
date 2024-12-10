@@ -8,9 +8,9 @@ Plan, shop, and cook effortlessly!
 
 - **Random Meal Suggestions**: Add random meals to your weekly menu.
 - **Meal Planning**: Assign meals to specific days of the week.
-- **Detailed Meal View**: See the ingredients and instructions for each meal.
-- **Shopping List**: Add meal ingredients to your shopping list with a tap.
-- **Easy Management**: Swipe left to delete a meal from your menu, tap remove to delete items from shopping list.
+- **Detailed Meal View**: See the ingredients and instructions for each meal aswell as video instructions.
+- **Shopping List**: Add meal ingredients to your shopping list with a tap for easy shopping.
+
   
 
 ## Get Started
@@ -49,11 +49,12 @@ npx expo start
 
 ## Usage
 
-- **Add Meals:** Press the button to add a random meal to your planner.
-- **Plan Your Week:** Assign meals to specific days by pressing the weekday selector.
-- **View Details:** Click on a meal to see its ingredients and instructions.
-- **Create a Shopping List:** Add ingredients to your shopping list for easy grocery shopping.
-- **Manage Meals:** Swipe left on a meal to delete it from your menu.
+- **Add Meals:** Tap the button to add a random meal to your planner.
+- **Plan Your Week:** Assign meals to specific days by tapping the weekday selector.
+- **View Details:** Tap on a meal to see its ingredients and instructions.
+- **Create a Shopping List:** Tap Add ingredients to ingredients to your shoppinglist.
+- **Manage Meals:** Swipe left to delete a meal from your menu. 
+- **Manage Shoppinglist:** Tap remove to delete ingredients from the shopping list. 
 
 ## Tech Stack
 
