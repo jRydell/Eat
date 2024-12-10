@@ -23,10 +23,10 @@ Plan, shop, and cook effortlessly!
 
 1. Clone the Repository:
 
-   ```bash
+```bash
    git clone https://github.com/jRydell/Eat.git
    cd Eat
-   ```
+```
 
 2. Install dependencies:
 
