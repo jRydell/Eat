@@ -69,25 +69,25 @@ Contributions are welcome! Follow these steps to contribute:
 
 ### Fork the repository.
 
-Create a new branch:
+1. Create a new branch:
 
 ```bash
 git checkout -b feature/your-feature-name
 ```
 
-Commit your changes:
+2 .Commit your changes:
 
 ```bash
 git commit -m 'Add your message'
 ```
 
-Push the branch:
+3. Push the branch:
 
 ```bash
 git push origin feature/your-feature-name
 ```
 
-**Open a Pull Request.**
+4 .**Open a Pull Request.**
 
 ## License
 
