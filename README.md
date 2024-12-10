@@ -86,7 +86,7 @@ Push the branch:
 git push origin feature/your-feature-name
 ```
 
-**_Open a Pull Request._**
+**Open a Pull Request.**
 
 ## License
 
