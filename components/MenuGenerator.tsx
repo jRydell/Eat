@@ -6,39 +6,12 @@ import MealCard from "../components/MealCard";
 import SwipeableListItem from "../components/SwipeableListItem";
 import MealDetails from "../components/MealDetails";
 import { Meal } from "@/types/meal";
+import { useMenuStore } from "../state/menuStore";
 
 const MenuGenerator = () => {
-  const [menu, setMenu] = useState<Meal[]>([]);
+  const { menu, addRandomMeal, removeMeal } = useMenuStore();
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedMeal, setSelectedMeal] = useState<Meal | null>(null);
-
-  useEffect(() => {
-    const fetchMenu = async () => {
-      const storedMenu = await loadMenu();
-      if (storedMenu) {
-        setMenu(storedMenu);
-      }
-    };
-    fetchMenu();
-  }, []);
-
-  const addMeal = async () => {
-    const meal = await fetchRandomMeal();
-    if (meal) {
-      const updatedMenu = [...menu, meal];
-      setMenu(updatedMenu);
-      await saveMenu(updatedMenu);
-    }
-  };
-
-  const deleteMeal = async (idMeal: string) => {
-    const storedMenu = await loadMenu();
-    if (storedMenu) {
-      const updatedMenu = storedMenu.filter((meal) => meal.idMeal !== idMeal);
-      await saveMenu(updatedMenu);
-      setMenu(updatedMenu);
-    }
-  };
 
   const openModal = (meal: Meal) => {
     setSelectedMeal(meal);
@@ -57,7 +30,7 @@ const MenuGenerator = () => {
         keyExtractor={(meal) => meal.idMeal}
         renderItem={({ item: meal }) => (
           <SwipeableListItem
-            onDelete={() => deleteMeal(meal.idMeal)}
+            onDelete={() => removeMeal(meal.idMeal)}
             swipeThreshold={75}
           >
             <MealCard meal={meal} onPress={() => openModal(meal)} />
@@ -65,7 +38,7 @@ const MenuGenerator = () => {
         )}
       />
       <View style={styles.buttonContainer}>
-        <Button title="Add Random Meal" onPress={addMeal} />
+        <Button title="Add Random Meal" onPress={() => addRandomMeal()} />
       </View>
       <MealDetails
         visible={modalVisible}

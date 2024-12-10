@@ -1,18 +1,6 @@
-import { Meal } from "@/types/meal";
 import { create } from "zustand";
 import { createJSONStorage, persist } from "zustand/middleware";
-
-type MenuStore = {
-  menu: Meal[];
-  addMeal: () => void;
-  removeMeal: () => void;
-};
-
-export const useMenuStore = create<MenuStore>(() => ({
-  menu: [],
-  addMeal: () => {},
-  removeMeal: () => {},
-}));
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 type ListStore = {
   shoppinglist: string[];
