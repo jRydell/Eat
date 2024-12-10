@@ -75,7 +75,7 @@ Contributions are welcome! Follow these steps to contribute:
 git checkout -b feature/your-feature-name
 ```
 
-2 .Commit your changes:
+2. Commit your changes:
 
 ```bash
 git commit -m 'Add your message'
@@ -87,7 +87,7 @@ git commit -m 'Add your message'
 git push origin feature/your-feature-name
 ```
 
-4 .**Open a Pull Request.**
+4. **Open a Pull Request.**
 
 ## License
 
