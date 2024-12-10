@@ -10,7 +10,8 @@ Plan, shop, and cook effortlessly!
 - **Meal Planning**: Assign meals to specific days of the week.
 - **Detailed Meal View**: See the ingredients and instructions for each meal.
 - **Shopping List**: Add meal ingredients to your shopping list with a tap.
-- **Easy Management**: Swipe left to delete a meal from your menu.
+- **Easy Management**: Swipe left to delete a meal from your menu, press remove to delete items from shopping list.
+  
 
 ## Get Started
 
