@@ -18,7 +18,7 @@ Plan, shop, and cook effortlessly!
 ### Prerequisites
 
 - Ensure you have [Node.js](https://nodejs.org/) and npm installed.
-- Install Expo CLI.
+
 
 ### Installation
 
@@ -50,7 +50,7 @@ npx expo start
 ## Usage
 
 - **Add Meals:** Press the button to add a random meal to your planner.
-- **Plan Your Week:** Assign meals to specific days for a structured weekly menu.
+- **Plan Your Week:** Assign meals to specific days by pressing the weekday selector.
 - **View Details:** Click on a meal to see its ingredients and instructions.
 - **Create a Shopping List:** Add ingredients to your shopping list for easy grocery shopping.
 - **Manage Meals:** Swipe left on a meal to delete it from your menu.
