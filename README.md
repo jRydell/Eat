@@ -42,17 +42,17 @@ npx expo start
 
 ## Run on Your Device or Emulator
 
-Press a to open the app on Android.
-Press i to open the app on iOS.
-Press w to open the app on the web.
+- Press a to open the app on Android.
+- Press i to open the app on iOS.
+- Press w to open the app on the web.
 
 ## Usage
 
-**Add Meals:** Press the button to add a random meal to your planner.
-**Plan Your Week:** Assign meals to specific days for a structured weekly menu.
-**View Details:** Click on a meal to see its ingredients and instructions.
-**Create a Shopping List:** Add ingredients to your shopping list for easy grocery shopping.
-**Manage Meals:** Swipe left on a meal to delete it from your menu.
+- **Add Meals:** Press the button to add a random meal to your planner.
+- **Plan Your Week:** Assign meals to specific days for a structured weekly menu.
+- **View Details:** Click on a meal to see its ingredients and instructions.
+- **Create a Shopping List:** Add ingredients to your shopping list for easy grocery shopping.
+- **Manage Meals:** Swipe left on a meal to delete it from your menu.
 
 ## Tech Stack
 
