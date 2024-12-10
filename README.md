@@ -61,6 +61,7 @@ npx expo start
 - **Navigation:** Expo router
 - **Storage:** AsyncStorage for local storage
 - **API:** TheMealDB for meal data
+- **Language:** TypeScript
 
 ## Contributing
 
