@@ -43,9 +43,9 @@ npx expo start
 
 ## Run on Your Device or Emulator
 
-- Press a to open the app on Android.
-- Press i to open the app on iOS.
-- Press w to open the app on the web.
+- Press 'a' to open the app on Android.
+- Press 'i' to open the app on iOS.
+- Press 'w' to open the app on the web.
 
 ## Usage
 
@@ -57,10 +57,10 @@ npx expo start
 
 ## Tech Stack
 
-- **Framework: React Native (via Expo)**
-- **Navigation: Expo router**
-- **Storage: AsyncStorage for local storage**
-- **API: TheMealDB for meal data**
+- **Framework:** React Native (via Expo)
+- **Navigation:** Expo router
+- **Storage:** AsyncStorage for local storage
+- **API:** TheMealDB for meal data
 
 ## Contributing
 
