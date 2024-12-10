@@ -94,5 +94,6 @@ This project is licensed under the MIT License. See the LICENSE file for more de
 
 ## Acknowledgements
 
-Expo for simplifying React Native development.
-TheMealDB API for providing meal data.
+- Expo for simplifying React Native development.
+- TheMealDB API for providing meal data.
+
