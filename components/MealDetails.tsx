@@ -75,30 +75,35 @@ const MealDetails = ({ visible, onClose, mealId }: MealDetailsProps) => {
         {loading ? (
           <ActivityIndicator size="large" color="#0000ff" />
         ) : (
-          <ScrollView contentContainerStyle={styles.scrollViewContent}>
-            <Text style={styles.modalText}>{meal.strMeal}</Text>
+          <ScrollView>
             <Image source={{ uri: meal.strMealThumb }} style={styles.image} />
-            {meal.strYoutube && (
-              <View>
-                <Pressable onPress={openYoutubeLink}>
-                  <Text style={styles.sectionTitle}>Video Instructions:</Text>
-                  <Text>{meal.strYoutube}</Text>
-                </Pressable>
-              </View>
-            )}
-            <Text style={styles.sectionTitle}>Ingredients:</Text>
-            {ingredients.map((ingredient: string, index: number) => (
-              <Text key={index} style={styles.ingredientText}>
+            <Text style={styles.title}>{meal.strMeal}</Text>
+            <Text style={styles.category}>{meal.strCategory}</Text>
+            <Text style={styles.area}>{meal.strArea}</Text>
+            <Text style={styles.subtitle}>Ingredients:</Text>
+            {ingredients.map((ingredient, index) => (
+              <Text key={index} style={styles.ingredient}>
                 {ingredient}
               </Text>
             ))}
-            <View style={styles.button}>
-              <Button title="Add to shopping list" onPress={addIngredients} />
+            <View style={styles.buttonContainer}>
+              <Button
+                title="Add to Shopping List"
+                onPress={addIngredients}
+                color="#841584"
+              />
             </View>
-            <Text style={styles.sectionTitle}>Instructions:</Text>
-            <Text>{meal.strInstructions}</Text>
-            <View style={styles.button}>
-              <Button title="Close" onPress={() => onClose()} />
+            <Text style={styles.subtitle}>Instructions:</Text>
+            <Text style={styles.instructions}>{meal.strInstructions}</Text>
+            {meal.strYoutube && (
+              <Button
+                title="Watch on YouTube"
+                onPress={openYoutubeLink}
+                color="#FF0000"
+              />
+            )}
+            <View style={styles.buttonContainer}>
+              <Button title="Close" onPress={onClose} color="#000000" />
             </View>
           </ScrollView>
         )}
@@ -110,47 +115,50 @@ const MealDetails = ({ visible, onClose, mealId }: MealDetailsProps) => {
 const styles = StyleSheet.create({
   modalView: {
     flex: 1,
-    width: "100%",
-    height: "100%",
+    padding: 16,
     backgroundColor: "white",
-    padding: 10,
-    alignItems: "center",
-    justifyContent: "center",
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5,
-  },
-  scrollViewContent: {
-    flexGrow: 1,
-    alignItems: "center",
-  },
-  modalText: {
-    marginBottom: 15,
-    fontSize: 24,
-    fontWeight: "bold",
-  },
-  sectionTitle: {
-    marginTop: 15,
-    fontSize: 18,
-    fontWeight: "bold",
-    textAlign: "left",
-  },
-  ingredientText: {
-    fontSize: 16,
-    marginVertical: 2,
-    textAlign: "left",
-    width: "100%",
-  },
-  button: {
-    marginTop: 15,
-    width: "60%",
-    alignItems: "center",
   },
   image: {
     width: "100%",
     height: 200,
     borderRadius: 10,
-    marginBottom: 15,
+    marginBottom: 16,
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: "bold",
+    marginBottom: 8,
+    textAlign: "center",
+  },
+  category: {
+    fontSize: 18,
+    fontStyle: "italic",
+    color: "#666",
+    textAlign: "center",
+  },
+  area: {
+    fontSize: 18,
+    color: "#666",
+    textAlign: "center",
+    marginBottom: 16,
+  },
+  subtitle: {
+    fontSize: 20,
+    fontWeight: "bold",
+    marginBottom: 8,
+  },
+  ingredient: {
+    fontSize: 16,
+    marginVertical: 2,
+  },
+  instructions: {
+    fontSize: 16,
+    marginVertical: 16,
+    lineHeight: 24,
+  },
+  buttonContainer: {
+    marginTop: 10,
+    marginBottom: 10,
   },
 });
 
