@@ -4,12 +4,28 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 type ListStore = {
   shoppinglist: string[];
-  addIngredient: () => void;
-  removeIngredient: () => void;
+  addIngredients: (ingredients: string[]) => void;
+  removeIngredient: (index: number) => void;
 };
 
-export const useListStore = create<ListStore>(() => ({
-  shoppinglist: [],
-  addIngredient: () => {},
-  removeIngredient: () => {},
-}));
+export const useListStore = create<ListStore, [["zustand/persist", unknown]]>(
+  persist(
+    (set) => ({
+      shoppinglist: [],
+      addIngredients: (ingredients: string[]) => {
+        set((state) => ({
+          shoppinglist: [...state.shoppinglist, ...ingredients],
+        }));
+      },
+      removeIngredient: (index: number) => {
+        set((state) => ({
+          shoppinglist: state.shoppinglist.filter((_, i) => i !== index),
+        }));
+      },
+    }),
+    {
+      name: "shopping_list_storage",
+      storage: createJSONStorage(() => AsyncStorage),
+    }
+  )
+);
