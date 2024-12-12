@@ -56,11 +56,6 @@ const MealDetails = ({ visible, onClose, mealId }: MealDetailsProps) => {
 
   const ingredients = extractIngredients(meal);
 
-  const handleAddIngredients = () => {
-    addIngredients(ingredients);
-    alert("Ingredients added to shopping list!");
-  };
-
   const openYoutubeLink = () => {
     if (meal.strYoutube) {
       Linking.openURL(meal.strYoutube);
@@ -87,7 +82,7 @@ const MealDetails = ({ visible, onClose, mealId }: MealDetailsProps) => {
             <View style={styles.buttonContainer}>
               <Button
                 title="Add to Shopping List"
-                onPress={handleAddIngredients}
+                onPress={() => addIngredients(ingredients)}
                 color="#841584"
               />
             </View>
@@ -155,8 +150,7 @@ const styles = StyleSheet.create({
     lineHeight: 24,
   },
   buttonContainer: {
-    marginTop: 10,
-    marginBottom: 10,
+    marginVertical: 10,
   },
 });
 

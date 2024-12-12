@@ -39,7 +39,7 @@ const DaySelector = ({ mealId }: DaySelectorProps) => {
       <Text style={styles.label}>Select Day:</Text>
       <Picker
         selectedValue={selectedDay}
-        onValueChange={(itemValue) => handleDayChange(itemValue)}
+        onValueChange={(value) => handleDayChange(value)}
         style={styles.picker}
         itemStyle={styles.pickerItem}
       >

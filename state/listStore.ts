@@ -16,6 +16,7 @@ export const useListStore = create<ListStore, [["zustand/persist", unknown]]>(
         set((state) => ({
           shoppinglist: [...state.shoppinglist, ...ingredients],
         }));
+        alert("Ingredients added to shopping list!");
       },
       removeIngredient: (index: number) => {
         set((state) => ({

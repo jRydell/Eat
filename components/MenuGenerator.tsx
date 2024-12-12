@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { View, Button, FlatList, StyleSheet } from "react-native";
-
-import { fetchRandomMeal } from "../services/api";
 import MealCard from "../components/MealCard";
 import SwipeableListItem from "../components/SwipeableListItem";
 import MealDetails from "../components/MealDetails";

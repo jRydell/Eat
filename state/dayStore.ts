@@ -3,7 +3,7 @@ import { createJSONStorage, persist } from "zustand/middleware";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 type DayStore = {
-  selectedDays: { [mealId: string]: string };
+  savedDays: { [mealId: string]: string };
   saveWeekday: (mealId: string, day: string) => void;
   loadWeekday: (mealId: string) => string | undefined;
 };
@@ -11,14 +11,14 @@ type DayStore = {
 export const useDayStore = create<DayStore, [["zustand/persist", unknown]]>(
   persist(
     (set, get) => ({
-      selectedDays: {},
+      savedDays: {},
       saveWeekday: (mealId: string, day: string) => {
         set((state) => ({
-          selectedDays: { ...state.selectedDays, [mealId]: day },
+          savedDays: { ...state.savedDays, [mealId]: day },
         }));
       },
       loadWeekday: (mealId: string) => {
-        return get().selectedDays[mealId];
+        return get().savedDays[mealId];
       },
     }),
     {

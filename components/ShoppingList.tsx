@@ -7,7 +7,6 @@ import {
   StyleSheet,
   TextInput,
 } from "react-native";
-import { useFocusEffect } from "@react-navigation/native";
 import { useListStore } from "../state/listStore";
 
 const ShoppingList = () => {
