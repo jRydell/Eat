@@ -11,14 +11,11 @@ Plan, shop, and cook effortlessly!
 - **Detailed Meal View**: See the ingredients and instructions for each meal aswell as video instructions.
 - **Shopping List**: Add meal ingredients to your shopping list with a tap for easy shopping.
 
-  
-
 ## Get Started
 
 ### Prerequisites
 
 - Ensure you have [Node.js](https://nodejs.org/) and npm installed.
-
 
 ### Installation
 
@@ -53,13 +50,14 @@ npx expo start
 - **Plan Your Week:** Assign meals to specific days by tapping the weekday selector.
 - **View Details:** Tap on a meal to see its ingredients and instructions.
 - **Create a Shopping List:** Tap Add ingredients to ingredients to your shoppinglist.
-- **Manage Meals:** Swipe left to delete a meal from your menu. 
-- **Manage Shoppinglist:** Tap remove to delete ingredients from the shopping list. 
+- **Manage Meals:** Swipe left to delete a meal from your menu.
+- **Manage Shoppinglist:** Tap remove to delete ingredients from the shopping list.
 
 ## Tech Stack
 
 - **Framework:** React Native (via Expo)
 - **Navigation:** Expo router
+- **State Management:** Zustand
 - **Storage:** AsyncStorage for local storage
 - **API:** TheMealDB for meal data
 - **Language:** TypeScript
@@ -98,4 +96,3 @@ This project is licensed under the MIT License. See the LICENSE file for more de
 
 - Expo for simplifying React Native development.
 - TheMealDB API for providing meal data.
-
