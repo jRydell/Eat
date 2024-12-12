@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { Picker } from "@react-native-picker/picker";
-import { saveWeekday, loadWeekday } from "@/utils/storage";
+import { useDayStore } from "../state/dayStore";
 
 type DaySelectorProps = {
   mealId: string;
@@ -19,28 +19,27 @@ const daysOfWeek = [
 
 const DaySelector = ({ mealId }: DaySelectorProps) => {
   const [selectedDay, setSelectedDay] = useState<string>("");
+  const saveWeekday = useDayStore((state) => state.saveWeekday);
+  const loadWeekday = useDayStore((state) => state.loadWeekday);
 
   useEffect(() => {
-    const loadSelectedDay = async () => {
-      const savedDay = await loadWeekday(mealId);
-      if (savedDay) {
-        setSelectedDay(savedDay);
-      }
-    };
+    const savedDay = loadWeekday(mealId);
+    if (savedDay) {
+      setSelectedDay(savedDay);
+    }
+  }, [mealId, loadWeekday]);
 
-    loadSelectedDay();
-  }, [mealId]);
-
-  const handleDayChange = async (day: string) => {
+  const handleDayChange = (day: string) => {
     setSelectedDay(day);
-    await saveWeekday(mealId, day);
+    saveWeekday(mealId, day);
   };
 
   return (
     <View style={styles.container}>
+      <Text style={styles.label}>Select Day:</Text>
       <Picker
         selectedValue={selectedDay}
-        onValueChange={(itemValue) => handleDayChange(itemValue)}
+        onValueChange={(value) => handleDayChange(value)}
         style={styles.picker}
         itemStyle={styles.pickerItem}
       >

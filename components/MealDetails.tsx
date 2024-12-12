@@ -9,11 +9,10 @@ import {
   ScrollView,
   Image,
   Linking,
-  Pressable,
 } from "react-native";
 import { fetchMealById } from "../services/api";
-import { loadShoppingList, saveShoppingList } from "@/utils/storage";
 import { Meal } from "@/types/meal";
+import { useListStore } from "../state/listStore";
 
 type MealDetailsProps = {
   visible: boolean;
@@ -24,6 +23,7 @@ type MealDetailsProps = {
 const MealDetails = ({ visible, onClose, mealId }: MealDetailsProps) => {
   const [meal, setMeal] = useState<Meal | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
+  const addIngredients = useListStore((state) => state.addIngredients);
 
   useEffect(() => {
     const getMealDetails = async () => {
@@ -56,13 +56,6 @@ const MealDetails = ({ visible, onClose, mealId }: MealDetailsProps) => {
 
   const ingredients = extractIngredients(meal);
 
-  const addIngredients = async () => {
-    const currentList = await loadShoppingList();
-    const updatedList = [...currentList, ...ingredients];
-    await saveShoppingList(updatedList);
-    alert("Ingredients added to shopping list!");
-  };
-
   const openYoutubeLink = () => {
     if (meal.strYoutube) {
       Linking.openURL(meal.strYoutube);
@@ -89,7 +82,7 @@ const MealDetails = ({ visible, onClose, mealId }: MealDetailsProps) => {
             <View style={styles.buttonContainer}>
               <Button
                 title="Add to Shopping List"
-                onPress={addIngredients}
+                onPress={() => addIngredients(ingredients)}
                 color="#841584"
               />
             </View>
@@ -157,8 +150,7 @@ const styles = StyleSheet.create({
     lineHeight: 24,
   },
   buttonContainer: {
-    marginTop: 10,
-    marginBottom: 10,
+    marginVertical: 10,
   },
 });
 
