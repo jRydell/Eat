@@ -12,6 +12,7 @@ export const useDayStore = create<DayStore, [["zustand/persist", unknown]]>(
   persist(
     (set, get) => ({
       selectedDays: {},
+
       saveWeekday: (mealId: string, day: string) => {
         set((state) => ({
           selectedDays: { ...state.selectedDays, [mealId]: day },

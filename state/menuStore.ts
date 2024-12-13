@@ -14,6 +14,7 @@ export const useMenuStore = create<MenuStore, [["zustand/persist", unknown]]>(
   persist(
     (set) => ({
       menu: [],
+
       addRandomMeal: async () => {
         const meal = await fetchRandomMeal();
         if (meal) {

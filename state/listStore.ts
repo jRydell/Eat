@@ -12,6 +12,7 @@ export const useListStore = create<ListStore, [["zustand/persist", unknown]]>(
   persist(
     (set) => ({
       shoppinglist: [],
+
       addIngredients: (ingredients: string[]) => {
         set((state) => ({
           shoppinglist: [...state.shoppinglist, ...ingredients],
